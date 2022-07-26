@@ -6,6 +6,6 @@ A purchase requisition is an internal document in which one department is asking
 perform operations like Create, Display and generate using file.
 
 Output of the file will look something like this. ![PO_SS](https://user-images.githubusercontent.com/88043998/179545678-937fecef-8a51-4bd4-926a-00f0a78b394c.jpg)
-It will be save in your disk storage with name Current_PO.txt
+It will be saved in your disk storage with name Current_PO.txt
 
 
