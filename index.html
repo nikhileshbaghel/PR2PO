@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Model Website</title>
+<!--    <link rel="stylesheet" type="text/css" href="style.css">  --> 
+</head>
+<body>
+    <h1> Please upload the file and click on submit</h1>
+
+    <form id="uploadForm" action="/process" method="POST" enctype="multipart/form-data">
+        <input type="file" name="csvFile" id="csvFileInput">
+        <button type="submit">Upload and Process</button>
+    </form>
+
+    <div id="results"></div>
+
+<script >
+
+document.getElementById('uploadForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    
+    var fileInput = document.getElementById('csvFileInput');
+    var file = fileInput.files[0];
+    
+    var formData = new FormData();
+    formData.append('csvFile', file);
+    
+fetch('http://127.0.0.1:5000/process', {
+mode: 'no-cors',
+method: 'POST',
+body: formData
+})
+.then(function (response) {
+    return response.json();
+})
+.then(function (data) {
+    var resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = 'Results: ' + data.results;
+})
+.catch(function (error) {
+    console.error('Error:', error);
+});
+});
+
+
+
+</script>
+</body>
+</html>
